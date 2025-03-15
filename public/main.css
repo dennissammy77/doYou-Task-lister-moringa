@@ -1,0 +1,142 @@
+main { 
+    grid-area: 1 / 1 / 2 / 3;
+    padding: 40px;
+}
+.main-header-tab{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.logo{
+    font-weight: 900;
+    font-size: x-large;
+    color: var(--secondary);
+}
+.logo-span {
+    color: var(--primary);
+}
+.search-input{
+    border-radius: 100px;
+}
+.task-container-body{
+    flex-grow: 1;
+    overflow-y: auto;
+    height: calc(100vh - 200px);
+    padding: 10px;
+    background: #f0f0f0;
+    border-radius: 10px;
+}
+.task-list-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+}
+.task-card {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    align-items: center;
+    color: var(--primary);
+    justify-content: space-between;
+    cursor: pointer;
+    transition: 0.3s ease-in;
+}
+.task-card p{
+    font-weight: 600;
+}
+.task-card span{
+    font-weight: 400;
+}
+.task-card:hover{
+    background-color: var(--secondary);
+    transition: all 0.2s ease-in-out;
+}
+.task-card-completed{
+    background-color: var(--secondary);
+}
+/* Hide the default checkbox */
+.taskCheckbox {
+    display: none;
+}
+
+/* Custom checkbox container */
+.custom-checkbox {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    font-size: 16px;
+    user-select: none;
+}
+
+/* The custom checkmark box */
+.custom-checkbox .checkmark {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #333;
+    border-radius: 4px;
+    display: inline-block;
+    position: relative;
+    margin-right: 10px;
+    transition: background 0.3s ease-in-out;
+}
+
+/* Change color when checked */
+.taskCheckbox:checked + .checkmark {
+    background-color: var(--secondary);
+    border-color: var(--primary);
+}
+
+/* Create checkmark inside the box */
+.checkmark::after {
+    color: var(--primary);
+    content: "";
+    position: absolute;
+    display: none;
+    left: 5px;
+    top: 0px;
+    width: 5px;
+    height: 10px;
+    border: solid white;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Show checkmark when checked */
+.taskCheckbox:checked + .checkmark::after {
+    display: block;
+}
+.completedTextBadge{
+    background-color: #e3e3e3;
+    color: #333;
+}
+/**Priority*/
+.task-card-badge{
+    padding: 5px 10px;
+    margin: 0px 5px;
+    border-radius: 10px;
+    font-weight: 600;
+}
+.task-card-overdue { /* Overdue (Red) */
+    background-color: #FFCDD2; 
+    color: #B71C1C;
+}
+
+
+.task-card-high { /* High Priority (Purple) */
+    background-color: #E1BEE7; 
+    color: #4A148C;
+}
+
+
+.task-card-medium { /* Medium Priority (Orange) */
+    background-color: #FFE0B2; 
+    color: #E65100;
+}
+
+
+.task-card-low { /* Low Priority (Blue) */
+    background-color: #c8dbe6; 
+    color: #1b435e;
+}

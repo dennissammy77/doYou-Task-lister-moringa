@@ -1,0 +1,131 @@
+:root {
+    --primary: #292216; /*Dark Olive*/
+    --secondary: #fdecb2; /*Pale Gold*/
+    --white: #ffffff;
+    --dark: #0c1025;
+}
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Montserrat", sans-serif;
+}
+body{
+    background-color: var(--white);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: 1fr;
+    grid-column-gap: 0px;
+    grid-row-gap: 0px;
+}
+
+/** Common styling */
+.box-shadow-lg{
+    box-shadow: -1px 7px 53px 5px rgba(0,0,0,0.33);
+    -webkit-box-shadow: -1px 7px 53px 5px rgba(0,0,0,0.33);
+    -moz-box-shadow: -1px 7px 53px 5px rgba(0,0,0,0.33);
+}
+.box-shadow-sm{
+    box-shadow: -2px 10px 51px 7px rgba(86,86,86,0.25);
+    -webkit-box-shadow: -2px 10px 51px 7px rgba(86,86,86,0.25);
+    -moz-box-shadow: -2px 10px 51px 7px rgba(86,86,86,0.25);
+}
+.row{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+}
+.col{
+    display: flex;
+    flex-direction: column;
+}
+.FormControl{
+    padding: 10px;
+    outline: none;
+    width: 100%;
+    border: none;
+    background-color: #f1f1f1;
+    cursor: pointer;
+}
+.FormControl:focus{
+    background-color: var(--secondary);
+    /* border: 1px solid var(--primary); */
+    transition: 0.2s ease-in-out;
+}
+.btn{
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin: 0px 10px;
+    border: none;
+    cursor: pointer;
+}
+.btn-primary{
+    background-color: var(--primary);
+    color: var(--secondary);
+    font-weight: 800;
+}
+.btn-primary:hover{
+    background-color: #292216c9;
+    transition: all .3s ease-in-out;
+}
+.btn span{
+    margin: 0px 5px;
+}
+.text-primary{
+    color: var(--primary);
+}
+.text-secondary{
+    color: var(--secondary);
+}
+.text-dark{
+    color: var(--dark);
+}
+.text-xl{
+    font-size: xx-large;
+}
+.text-lg{
+    font-size: large;
+}
+.text-md{
+    font-size: medium;
+}
+.text-sm{
+    font-size: small;
+}
+.text-xs{
+    font-size: x-small;
+}
+.mx-lg{
+    margin: 0px 20px;
+}
+.mx-md{
+    margin: 0px 10px;
+}
+.mx-sm{
+    margin: 0px 5px;
+}
+.my-lg{
+    margin: 20px 0px;
+}
+.my-md{
+    margin: 10px 0px;
+}
+.my-sm{
+    margin: 5px 0px;
+}
+.hidden{
+    display: none;
+}
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none; 
+}
+  
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollbar-hidden {
+-ms-overflow-style: none;  /* IE and Edge */
+scrollbar-width: none;  /* Firefox */
+}
