@@ -23,7 +23,7 @@
                 <h1 class="logo">Do<span class="logo-span">You</span>.</h1>
                 <div class="row">
                     <input type="search" class="FormControl search-input" placeholder="search">
-                    <button class="btn btn-primary">
+                    <button class="btn btn-primary" type="button" id="createTask">
                         <i class="fas fa-plus"></i>
                         <span class="">Create</span>
                     </button>
@@ -40,7 +40,74 @@
         </main>
 
         <!-- Side Body -->
-        <aside>
+        <aside class="aside-container">
+            <div class="side-info-container box-shadow-sm aside-card front-view">
+                <div class="profile-container col">
+                    <img src="https://avatar.iran.liara.run/public"  alt="profile-image-avatar">
+                    <p class="text-lg">Pesky User</p>
+                    <p class="text-sm">Software Dev</p>
+                </div>
+                <!-- Stats -->
+                <div class="tasks-analytics">
+                    <div class="row">
+                        <h3 class="analyics-title text-secondary">Todays stats</h3>
+                    </div>
+                    <div class="tasks-analytics-list my-lg">
+                        <div class="row my-md">
+                            <p class="text-lg text-secondary">Completed</p>
+                            <span class="text-md text-white">0</span>
+                        </div>
+                        <div class="row my-md">
+                            <p class="text-sm text-secondary">Priority: High</p>
+                            <span class="text-md text-white">0</span>
+                        </div>
+                        <div class="row my-md">
+                            <p class="text-sm text-secondary">Priority: Medium</p>
+                            <span class="text-md text-white">0</span>
+                        </div>
+                        <div class="row my-md">
+                            <p class="text-sm text-secondary">Priority: Low</p>
+                            <span class="text-md text-white">0</span>
+                        </div>
+                        <div class="row my-md">
+                            <p class="text-sm text-secondary">Priority: Overdue</p>
+                            <span class="text-md text-white">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="side-info-container box-shadow-sm aside-card back-view">
+                <div class="row justify-between">
+                    <p class="text-secondary">Task</p>
+                    <button class="btn btn-primary" type="button" id="closeTaskForm">
+                        <i class="fa-solid fa-xmark"></i>
+                        <span class="">Close</span>
+                    </button>
+                </div>
+                <form action="" class="task-form-container" id="createTaskForm">
+                    <div class="col my-md">
+                        <label for="name" class="text-secondary">Name</label>
+                        <input type="text" placeholder="Buy groceries" class="FormControl my-md" id="taskName">
+                    </div>
+                    <div class="col my-md">
+                        <label for="description" class="text-secondary">Description</label>
+                        <textarea name="description" id="taskDescription" class="FormControl my-md" placeholder="create a grocery list"  id="taskDescription"></textarea>
+                    </div>
+                    <div class="col my-md">
+                        <label for="priority" class="text-secondary">Priority</label>
+                        <select name="priority" id="taskPriority" class="FormControl my-md">
+                            <option value="low">Low</option>
+                            <option value="low">Medium</option>
+                            <option value="low">High</option>
+                        </select>
+                    </div>
+                    <div class="col my-md">
+                        <label for="date" class="text-secondary">Date</label>
+                        <input type="date" placeholder="Date" class="FormControl my-md" id="taskDate">
+                    </div>
+                    <button type="submit" class="btn btn-secondary">Save</button>
+                </form>
+            </div>
             <!-- Get started Message -->
             <!-- Task Form -->
             <!-- Profile /settings viewer -->
