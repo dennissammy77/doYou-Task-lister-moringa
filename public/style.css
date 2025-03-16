@@ -101,6 +101,7 @@ body{
 }
 .text-lg{
     font-size: large;
+    font-weight: 600;
 }
 .text-md{
     font-size: medium;
@@ -147,4 +148,15 @@ scrollbar-width: none;  /* Firefox */
 }
 .justify-center{
     justify-content: center;
+}
+.align-items{
+    align-items: center;
+}
+.center-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    margin: auto;
 }
