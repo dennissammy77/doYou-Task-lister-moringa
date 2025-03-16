@@ -1,6 +1,5 @@
 main { 
     grid-area: 1 / 1 / 2 / 3;
-    padding: 40px;
 }
 .main-header-tab{
     display: flex;

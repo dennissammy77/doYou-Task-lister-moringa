@@ -15,8 +15,9 @@ body{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     grid-template-rows: 1fr;
-    grid-column-gap: 0px;
+    grid-column-gap: 40px;
     grid-row-gap: 0px;
+    padding: 40px;
 }
 
 /** Common styling */
@@ -163,7 +164,6 @@ scrollbar-width: none;  /* Firefox */
 .center-div{
     display: flex;
     justify-content: center;
-    align-items: center;
     height: 100%;
     width: 100%;
     margin: auto;
@@ -206,4 +206,70 @@ scrollbar-width: none;  /* Firefox */
 .dropdown:hover .dropbtn {
     background-color: var(--primary);
     color: var(--secondary);
+}
+.flipping-container{
+    perspective: 1000vw;
+    position: relative;
+}
+.flipping-container-card{
+    width: calc(100%);
+    height: calc(100vh - 80px);
+    position: absolute;
+    backface-visibility: hidden;
+    transition: transform 900ms ease-in-out;
+    cursor: pointer;
+}
+.back-view {
+    transform: rotateY(180deg);
+}
+/* Flip Effect */
+.flipped .front-view{
+    transform: rotateY(180deg);
+}
+
+.flipped .back-view {
+    transform: rotateY(0deg);
+}
+/* // media queries */
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 800px) {
+    body{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+        grid-column-gap: 0px;
+        grid-row-gap: 0px;
+        padding: 20px;
+    }
+    main{
+        grid-area: 1 / 1 / 2 / 2;
+    }
+    .task-container-body{
+        height:100vh;
+    }
+    aside{
+        grid-area: 1 / 1 / 2 / 2;
+        padding: 10px;
+    }
+    .dropdown-content{
+        left: 0;
+    }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+    
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    
 }

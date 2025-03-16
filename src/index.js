@@ -34,16 +34,37 @@ document.addEventListener("DOMContentLoaded", function () {
 
     loadTasks();
     // Flips Card
+    const parentBody = document.querySelector(".parentBody");
     const asideContainer = document.querySelector(".aside-container");
     const createTaskBtn = document.getElementById("createTask");
 
+    const asideContainers = document.querySelectorAll(".side-info-container");
+    const mainSectionBody = document.querySelector(".main-sectionBody");
+    
+    if(window.innerWidth < 992){
+        // move container to body
+        asideContainer.classList.remove('flipping-container');
+        parentBody.classList.add('flipping-container');
+
+        asideContainers[0].classList.remove('front-view')
+        asideContainers[0].classList.remove('flipping-container-card')
+        asideContainers[1].classList.remove('back-view')
+        asideContainers[1].classList.remove('flipping-container-card')
+
+        mainSectionBody.classList.add('front-view')
+        mainSectionBody.classList.add('flipping-container-card')
+        
+        asideContainer.classList.add('back-view')
+        asideContainer.classList.add('flipping-container-card')
+    }
+
     createTaskBtn.addEventListener("click", function () {
-        asideContainer.classList.toggle("flipped");
+        parentBody.classList.toggle("flipped");
     });
     const closeTaskFormBtn = document.getElementById("closeTaskForm");
 
     closeTaskFormBtn.addEventListener("click", function () {
-        asideContainer.classList.toggle("flipped");
+        parentBody.classList.toggle("flipped");
     });
     // assign the date picker
     const today = new Date().toISOString().split("T")[0];
