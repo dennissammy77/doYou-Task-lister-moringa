@@ -22,7 +22,34 @@
             <div class="main-header-tab">
                 <h1 class="logo">Do<span class="logo-span">You</span>.</h1>
                 <div class="row">
-                    <input type="search" class="FormControl search-input" placeholder="search">
+                    <div class="dropdown">
+                        <button class="btn btn-secondary">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                        <div class="dropdown-content box-shadow-sm">
+                            <ul>
+                                <li class="bg-secondary"><p>Status</p></li>
+                                <li class="taskFilterQuery" data-status="all"><p>All</p></li>
+                                <li class="taskFilterQuery" data-status="pending"><p>Pending</p></li>
+                                <li class="taskFilterQuery" data-status="completed"><p>Completed</p></li>
+                                <!-- 
+                                <hr>
+                                <li class="bg-secondary"><p>Priority</p></li>
+                                <hr>
+                                <li><p>High</p></li>
+                                <li><p>Medium</p></li>
+                                <li><p>Low</p></li>
+                                 -->
+                                <!-- <hr>
+                                <li class="bg-secondary"><p>Date</p></li>
+                                <hr>
+                                <li><p>Today</p></li>
+                                <li><p>Tomorrow</p></li>
+                                <li><p>This week</p></li> -->
+                            </ul>
+                        </div>
+                    </div>
+                    <input type="search" class="FormControl search-input" placeholder="search by name" id="taskSearchQuery">
                     <button class="btn btn-primary" type="button" id="createTask">
                         <i class="fas fa-plus"></i>
                         <span class="">Create</span>
@@ -50,28 +77,16 @@
                 <!-- Stats -->
                 <div class="tasks-analytics">
                     <div class="row">
-                        <h3 class="analyics-title text-secondary">Todays stats</h3>
+                        <h3 class="analyics-title text-secondary">Stats</h3>
                     </div>
                     <div class="tasks-analytics-list my-lg">
                         <div class="row my-md">
+                            <p class="text-lg text-secondary">All</p>
+                            <span class="text-md text-white" id="analyticsAllTasks">0</span>
+                        </div>
+                        <div class="row my-md">
                             <p class="text-lg text-secondary">Completed</p>
-                            <span class="text-md text-white">0</span>
-                        </div>
-                        <div class="row my-md">
-                            <p class="text-sm text-secondary">Priority: High</p>
-                            <span class="text-md text-white">0</span>
-                        </div>
-                        <div class="row my-md">
-                            <p class="text-sm text-secondary">Priority: Medium</p>
-                            <span class="text-md text-white">0</span>
-                        </div>
-                        <div class="row my-md">
-                            <p class="text-sm text-secondary">Priority: Low</p>
-                            <span class="text-md text-white">0</span>
-                        </div>
-                        <div class="row my-md">
-                            <p class="text-sm text-secondary">Priority: Overdue</p>
-                            <span class="text-md text-white">0</span>
+                            <span class="text-md text-white" id="analyticsCompletedTasks">0</span>
                         </div>
                     </div>
                 </div>

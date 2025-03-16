@@ -1,33 +1,37 @@
-import {addTask,getTasks} from "./database.js";
-import {createTask} from './tasks.js';
+import {addTask} from "./database.js";
+import {loadTasks} from './tasks.js';
 document.addEventListener("DOMContentLoaded", function () {
-    const taskContainer = document.querySelector(".task-list-container");
-
-    function loadTasks(){
-        taskContainer.innerHTML=``
-        getTasks().then((data)=>{
-            console.log(data);
-            if(data?.length > 0){
-                taskContainer.classList.remove("center-div");
-                for (let i = 0; i < data?.length; i++) {           
-                    const task = createTask(data[i]);
-                    taskContainer.appendChild(task);
-                }
-            }else{
-                const noResultFoundUi = document.createElement("div");
-                noResultFoundUi.innerHTML=`
-                    <i class="fa-regular fa-folder-open text-xl"></i>
-                    <span class="my-lg text-lg">No tasks found</span>
-                `
-                noResultFoundUi.classList.add("col");
-                noResultFoundUi.classList.add("justify-center");
-                noResultFoundUi.classList.add("align-items");
-                noResultFoundUi.classList.add("text-primary");
-                taskContainer.classList.add("center-div");
-                taskContainer.appendChild(noResultFoundUi);
+    let searchQuery = '';
+    let filterQuery = 'all';
+    // listen for query changes
+    document.getElementById("taskSearchQuery").addEventListener("input",(event)=>{
+        searchQuery = event.target.value;
+        console.log(searchQuery)
+        loadTasks(searchQuery,)
+    });
+    document.querySelectorAll(".taskFilterQuery").forEach((item)=>{
+       item.addEventListener("click",()=>{
+            console.log('clicked',item.dataset.status)
+            switch(item.dataset.status){
+                case 'all':
+                    filterQuery = 'all'
+                    break
+                case 'pending':
+                    filterQuery = false
+                    break
+                case 'completed':
+                    filterQuery = true
+                    break
+                default:
+                    filterQuery = 'all'
+                    break
             }
-        }).catch(console.error);
-    }
+            console.log(searchQuery,filterQuery)
+            loadTasks('',filterQuery)
+       });
+    });
+    //
+
     loadTasks();
     // Flips Card
     const asideContainer = document.querySelector(".aside-container");
@@ -41,6 +45,15 @@ document.addEventListener("DOMContentLoaded", function () {
     closeTaskFormBtn.addEventListener("click", function () {
         asideContainer.classList.toggle("flipped");
     });
+    // assign the date picker
+    const today = new Date().toISOString().split("T")[0];
+    document.getElementById("taskDate").setAttribute("min", today);
+
+    const oneWeekLater = new Date();
+    oneWeekLater.setDate(new Date().getDate() + 7); // Add 7 days
+    const maxDate = oneWeekLater.toISOString().split("T")[0];
+
+    document.getElementById("taskDate").setAttribute("max", maxDate);
 
     // create task Form
     document.getElementById("createTaskForm").addEventListener("submit",async (event)=>{
@@ -63,7 +76,7 @@ document.addEventListener("DOMContentLoaded", function () {
                     loadTasks()
                 })
                 .catch(console.error);
-            // store in local storage or indexDb
+            // store in local storage or indexD
         } catch (error) {
             console.log(error);
         }

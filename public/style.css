@@ -53,6 +53,14 @@ body{
     /* border: 1px solid var(--primary); */
     transition: 0.2s ease-in-out;
 }
+.bg-primary{
+    background-color: var(--primary);
+    color: var(--secondary);
+}
+.bg-secondary{
+    background-color: var(--secondary);
+    color: var(--primary);
+}
 .btn{
     padding: 10px;
     border-radius: 10px;
@@ -159,4 +167,43 @@ scrollbar-width: none;  /* Firefox */
     height: 100%;
     width: 100%;
     margin: auto;
+}
+.dropdown{
+    position: relative;
+    display: inline-block;
+}
+.dropdown-content{
+    display: none;
+    position: absolute;
+    background-color: var(--white);
+    min-width: 200px;
+    max-width: 400px;
+    z-index: 1;
+    right: 0;
+    border-radius: 10px;
+    padding: 5px 0px;
+}
+/* Links inside the dropdown */
+.dropdown-content ul li {
+    color: var(--primary);
+    padding: 6px 16px;
+    text-decoration: none;
+    display: block;
+}
+  
+/* Change color of dropdown links on hover */
+.dropdown-content ul li:hover {
+    background-color: var(--secondary);
+    color: var(--primary);
+}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {
+    background-color: var(--primary);
+    color: var(--secondary);
 }

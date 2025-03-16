@@ -46,7 +46,7 @@ export async function addTask(task) {
     });
 }
 
-export async function getTasks(search="",filter="",date="today") {
+export async function getTasks() {
     const db = await openDatabase();
     const transaction = db.transaction("tasks", "readonly");
     const store = transaction.objectStore("tasks");

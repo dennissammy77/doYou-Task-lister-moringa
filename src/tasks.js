@@ -1,4 +1,4 @@
-import { updateTask,deleteTask } from "./database.js";
+import { updateTask,deleteTask,getTasks } from "./database.js";
 // Function to create task elements
 export function createTask(task) {
     const taskDiv = document.createElement("div");
@@ -88,7 +88,7 @@ export function createTask(task) {
             taskTimeline.style.opacity = "0.5";
             taskDiv.classList.add("task-card-completed");
             updateTask(task?.id, { status: true })
-            .then(console.log)
+            .then(loadTasks())
             .catch(console.error);
         } else {
             taskTitle.style.textDecoration = "none";
@@ -97,16 +97,65 @@ export function createTask(task) {
             taskTimeline.style.opacity = "1";
             taskDiv.classList.remove("task-card-completed");
             updateTask(task?.id, { status: false })
-            .then(console.log)
+            .then(loadTasks('','all'))
             .catch(console.error);
         }
     });
     // Handle task delete event
     deleteSpan.addEventListener("click",async()=>{
         deleteTask(task?.id).then(console.log).catch(console.error);
-        // window.location.reload()
         loadTasks()
     });
 
     return taskDiv;
+};
+
+export function loadTasks(searchQuery='',filterQuery='all'){
+    const taskContainer = document.querySelector(".task-list-container");
+    
+    taskContainer.innerHTML=``
+    getTasks().then((data)=>{
+        let taskResults = data;
+        if(searchQuery !== ''){
+            taskResults = searchTasks(data,searchQuery)
+        }
+        if(filterQuery !== 'all'){
+            taskResults = filterTasks(taskResults,filterQuery,"status")
+        }
+        if(taskResults?.length > 0){
+            taskContainer.classList.remove("center-div");
+            taskResults.map((task)=>{
+                const taskElement = createTask(task);
+                taskContainer.appendChild(taskElement);
+            });
+            document.getElementById("analyticsAllTasks").textContent=data?.length;
+            document.getElementById("analyticsCompletedTasks").textContent=filterTasks(data,true,"status")?.length;
+        }else{
+            const noResultFoundUi = document.createElement("div");
+            noResultFoundUi.innerHTML=`
+                <i class="fa-regular fa-folder-open text-xl"></i>
+                <span class="my-lg text-lg">No tasks found</span>
+            `
+            noResultFoundUi.classList.add("col");
+            noResultFoundUi.classList.add("justify-center");
+            noResultFoundUi.classList.add("align-items");
+            noResultFoundUi.classList.add("text-primary");
+            taskContainer.classList.add("center-div");
+            taskContainer.appendChild(noResultFoundUi);
+        }
+    }).catch(console.error);
+};
+
+function searchTasks(data,query=""){
+    console.log(data,query)
+    return data.filter(task => 
+        task?.name?.toLowerCase().includes(query?.toLowerCase())
+    );
+}
+function filterTasks(data,filterQuery,filterKey){
+    console.log(data,filterQuery,filterKey);
+    if(filterQuery === 'all') return data
+    return data.filter(task => 
+        task[filterKey] === filterQuery
+    );
 }
