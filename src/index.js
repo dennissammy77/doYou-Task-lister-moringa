@@ -95,6 +95,11 @@ document.addEventListener("DOMContentLoaded", function () {
                     document.getElementById("createTaskForm").reset()
                     console.log
                     loadTasks()
+                    gtag('event', 'task_created', {
+                        'event_category': 'Tasks',
+                        'event_label': 'New Task Added',
+                        'value': 1
+                    });
                 })
                 .catch(console.error);
             // store in local storage or indexD
